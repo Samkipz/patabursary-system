@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+<h1>Edit Bursary form</h1>
+
+<form  method="post">
+    {% csrf_token %}
+    {{ bursary_form.as_p }}
+    {% if formset %}
+    <h3>Bursary Parameters</h3>
+    {{ formset.management_form}}
+    <div id="parameter-form-list">
+        {% for form in formset %}
+            <div class="parameter-form">
+                {{ form|crispy }}
+            </div>
+        {% endfor %}
+    </div>
+    <div id="empty-form" class="hidden">{{ formset.empty_form.as_p }}</div>
+    <button id="add-more" type="button">Add New Parameter</button>
+
+
+    {% endif %}
+
+    <button type="submit">Save changes</button>
+</form>
+</div>
+
+<script>
+    
+    const addMoreBtn = document.getElementById("add-more")
+    const totalNewForms = document.getElementById("id_form-TOTAL_FORMS")
+    
+
+    addMoreBtn.addEventListener("click", add_new_form)
+    function add_new_form(event) {
+        if (event) {
+            event.preventDefault()
+        }
+        const currentParameterForms = document.getElementsByClassName("parameter-form")
+        const currentFormCount = currentParameterForms.length + 1
+
+        const formCopyTarget = document.getElementById("parameter-form-list")
+        const copyEmptyFormEl = document.getElementById("empty-form").cloneNode(true)
+        copyEmptyFormEl.setAttribute("class", "parameter-form")
+        copyEmptyFormEl.setAttribute("id", `form-${currentFormCount}`)
+        const regex = new RegExp('__prefix__', 'g')
+        copyEmptyFormEl.innerHTML = copyEmptyFormEl.innerHTML.replace(regex, currentFormCount)
+        totalNewForms.setAttribute('value', currentFormCount + 1)
+
+
+        //now add new empty form element to our html form
+        formCopyTarget.append(copyEmptyFormEl)
+    }
+</script>
+
+{% endblock %}

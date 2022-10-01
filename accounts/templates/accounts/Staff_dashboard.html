@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+  </div>
+  
+  <div id="main">
+    <button class="openbtn" onclick="openNav()">MENU</button>
+    
+    <br />
+    <br />
+    <div class="container d-flex flex-row">
+      <div class="card border-success mb-3 mx-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">View Applicants</h5>
+           <a href="#" class="btn btn-success stretched-link">Applicants</a>
+        </div>
+      </div>
+      <div class="card border-success mb-3 mx-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Add New Bursary</h5>
+           <a href="{% url 'bursaryapp:Addbursary' %}" class="btn btn-success stretched-link">Add Bursary</a>
+        </div>
+      </div>
+      <div class="card border-success mb-3 mx-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">View or Edit Bursary</h5>
+           <a href="{% url 'bursaryapp:home' %}" class="btn btn-success stretched-link">View Bursary</a>
+        </div>
+      </div>        
+    </div>
+    
+  </div>  
+
+  <script>
+      function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+  </script>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<br />
+<br />
+
+<div class="container-fluid-lg">
+    <div class="row d-flex justify-content-md-around flex-row" >
+        <div class="col-sm-12 col-md-4" > 100% of your profile is complete </div>
+        <div class="col-sm-12 col-md-3" > <h5> {{ user.first_name}} {{ user.last_name}}</h5> </div>
+        <div class="col-sm-12 col-md-3" > <h5>Approved</h5> </div> 
+    </div>
+</div>
+
+<div class="container-lg">
+    <hr>
+    <br>
+    <div class="row d-flex flex-lg-row">
+        <div class="col-lg-4">
+            <p>First name: {{ user.first_name}}</p>
+        </div>
+        <div class="col-lg-4">
+            <p>Last name: {{ user.last_name}}</p>
+        </div>
+        <div class="col-lg-4">
+            <p>Course name: {{ applicants.course_name}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

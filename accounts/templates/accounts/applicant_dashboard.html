@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="card d-flex flex-row shadow-sm">
+            <div class="card-body">
+                <small class="text-muted d-flex justify-content-center">Profile Completed: 100%</small>
+            </div>
+            <div class="card-body">
+                <!-- <h5 class="card-title d-flex justify-content-center">{{ request.user.first_name }}</h5> -->
+                <small class="text-muted d-flex justify-content-center">{{ request.user.first_name }} {{ request.user.last_name }}</small>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title d-flex justify-content-center">{{ bursary.name_of_bursary }}</h5>
+                <small class="text-muted d-flex justify-content-center">
+                  {% if applicant.approved == False %}
+                    <a class="btn-danger approve-badge">pending approval</a>
+                  {% else %}
+                    <a class="approved-badge">Approved</a>
+                  {% endif %}
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card mb-3" style="max-width: 540px;"> 
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img 
+                    src="{{ request.user.applicant_profile.get_avatar }}" 
+                    class="card-img img-fluid" 
+                    style="width: 350px; height: 145px; display:block; margin-left: auto; margin-right: auto;">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ request.user.first_name }} {{ request.user.last_name }}</h5>
+                      <p class="card-text">View and edit your profile's details.</p>
+                      <a href="{% url 'accounts:applicant_profile' applicant.pk %}" class="btn custom-btn">My details</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Bursary Application History</h5>
+              <p class="card-text">View busaries you have applied and Application status.</p>
+              <a href="#" class="btn custom-btn">My Applications</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+<!-- <div class="container-fluid-lg">
+    <div class="row d-flex justify-content-md-around flex-row" >
+        <div class="col-sm-12 col-md-4" > 100% of your profile is complete </div>
+        <div class="col-sm-12 col-md-3" > <h5> {{ user.first_name}} {{ user.last_name}}</h5> </div>
+        <div class="col-sm-12 col-md-3" > <h5>Approved</h5> </div> 
+    </div>
+</div> -->
+
+{% endblock %}

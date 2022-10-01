@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+
+{% block header %}
+        <div class="row d-flex flex-row">
+            
+            <div class="col-4 col-lg-6">
+                <div class="d-flex form-inputs">
+                    <input class="form-control" type="text" placeholder="Search">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+            <div class="col-8 col-lg-6">
+
+                <div class="navbar">
+                    <a class="active" href="{% url 'bursaryapp:home' %}">&nbsp&nbsp&nbsp&nbspHome <i class="fa fa-home fa-fw"></i> </a>
+                    {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                    <a href="{% url 'bursaryapp:Applicants' %}"> Applicants </i></a>
+                    <a href="{% url 'bursaryapp:Addbursary' %}"> Add Bursary </i></a>
+                    {% else %}
+                    <a href="{% url 'accounts:applicant_dashboard' %}"> My profile <i class="fa fa-fw fa-user"></i></a>
+                    {% endif %}
+                    <a href="{% url 'logout' %}"> Logout <i class="fa fa-power-off"></i> &nbsp&nbsp&nbsp&nbsp</a>
+                    {% else %}
+                    <a href="{% url 'accounts:login' %}"> Login <i class="fa fa-sign-in"></i> &nbsp&nbsp&nbsp&nbsp</a>
+                    {% endif %} 
+                </div>
+            </div>    
+        </div>
+        {% endblock %}
+
+{% block content%}
+
+<div class="body-container pt-lg-4">
+    <div class="container-lg">
+        <div class="d-flex justify-content-center"><h2>Applicants</h2></div>
+    
+
+    {% for applicant in applicants %}
+
+        <div class="row mb-5 applicant-row shadow-sm">
+            <div class="col d-flex justify-content-center"><h5><a href="#">{{ applicant }} </a></h5></div>
+        
+            <div class="col d-flex justify-content-center align-items-center">
+                {% if applicant.approved == False %}
+                    <a class="btn btn-danger approve-badge" href="{% url 'accounts:approve' applicant.pk %}" role="button">approve</a>
+                    <!-- <button type="button" class="btn btn-danger approve-badge">Approve</button> -->
+                    <!-- <a href="#" class="approve-badge">Not Approved </a> -->
+                {% else %}
+                    <a class="approved-badge">Approved </a>
+                {% endif %}
+            </div>
+            
+            <div class="col d-flex justify-content-center align-items-center">
+                <a href="{% url 'accounts:applicant_profile' applicant.pk %}" class="badg-blue">View account </a>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}

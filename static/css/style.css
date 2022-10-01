@@ -1,0 +1,474 @@
+/*========================== HOME/INDEX =======================*/
+
+body{
+  background-color: #e2eaec;
+  color: #5b4343;
+}
+
+.title{
+  font-size: 80px;
+  align-items: center;
+  padding-bottom: 1px;
+}
+.title-text{
+  font-size: 30px;
+  text-align: center;
+}
+.custom-input{
+  border: 1px solid #5b4343;
+  height: 40px;
+  width: 300px;
+  border-radius: 10px;
+  /* background: rgb(235, 21, 21); */
+}
+.custom-btn{
+  border: 1px solid #5b4343;
+}
+.custom-btn:hover{
+  background-color: #5b4343;
+  border: 1px solid #4b3939;
+  color: #f1f1f1; 
+}
+.button-div .custom-btn{
+  border: 1px solid #4b3939;
+  border-radius: 20px;
+  width: 150px;
+  height: auto;
+  padding: 2px;
+  background: #5b4343e1;
+  color: white;
+}
+.button-div .custom-btn:hover {
+  background-color: #5b4343;
+  border: 1px solid #4b3939;
+}
+/*------------------ title properties ----------------------*/
+.web-title{
+    padding-left: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the navigation bar */
+.navbar {
+  width: 100%;
+  background-color: #5b4343;
+  overflow: auto;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+/* Navbar links */
+.navbar a {
+  float: left;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+/* Navbar links on mouse-over */
+.navbar a:hover {
+  background-color: #635353;
+}
+
+/* Current/active navbar link */
+/* .active {
+  background-color: #11c1ce;
+} */
+
+
+/*========================== Accounts =======================*/
+/*------------------ login page ----------------------*/
+
+
+/* The sidebar menu */
+.sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The sidebar links */
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* The button used to open the sidebar */
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+
+
+/*------------------ Staff homepage ----------------------*/
+
+.bursary-row{
+  position: relative;
+  background-color: #ffff;
+  border-radius: 50px;
+  padding: 5px;
+}
+
+.bursary-row1{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+}
+
+.bursary-row a{
+  text-decoration: none;
+  color: #5b4343;
+  
+  font-size: 16px;
+}
+
+.applicant-row{
+  position: relative;
+  background-color: #ffff;
+  border-radius: 50px;
+  padding: 5px;
+}
+
+.applicant-row a{
+  text-decoration: none;
+  color: #5b4343;
+  font-size: 16px;
+}
+
+a.approved-badge{
+  text-decoration: none;
+  background-color: #218838;
+  border-color: #1e7e34;
+  color: #ffff;
+  border-radius: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  align-items: center;
+  height: fit-content;
+}
+
+/* button.btn.btn-danger.approve-badge */
+a.approve-badge{
+  text-decoration: none;
+  color: #ffff;
+  border-radius: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  align-items: center;
+  height: fit-content;
+}
+a.badg-blue{
+  text-decoration: none;
+  background-color: #138496;
+  border-color: #117a8b;
+  color: #ffff;
+  border-radius: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  align-items: center;
+  height: fit-content;
+}
+
+
+.form-inputs{
+  position:relative;
+  margin-left: 15%;
+  width: 50%;
+  
+}
+.form-inputs .form-control{
+  border-radius: 50px; 
+}
+
+.form-inputs .form-control:focus{
+  box-shadow:none;
+  border:1px solid #5b4343;
+}
+
+.form-inputs i{
+  position:absolute;
+  right:10px;
+  top:10px;
+}
+/*------------------ Sign-in and Sign-up page ----------------------*/
+/*------------------ Sign-in page ----------------------*/
+.signin-form{
+  text-align: center;
+}
+.signin-form .custom-btn {
+  background: #5b4343;
+  color: white;
+  width: 300px;
+  border-radius: 20px;
+}
+/*------------------ Sign-up page ----------------------*/
+#messages {
+  border: 1px solid #993d3d;
+  background: #5b4343;
+  /* width: 300px;
+  height: auto; */
+  color: white;
+  border-radius: 10px;
+  align-items: center;
+  padding-top: 2px;
+  padding: 3px;
+}
+
+/* .form-control {
+	height: 40px;
+	box-shadow: none;
+	color: #969fa4;
+} */
+.form-control:focus {
+	border-color: #5cb85c;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+.signup-form {
+	width: 450px;
+	margin: 0 auto;
+	padding: 30px 0;
+  	font-size: 15px;
+}
+.signup-form h2 {
+	color: #636363;
+	margin: 0 0 15px;
+	position: relative;
+	text-align: center;
+}
+.signup-form h2:before, .signup-form h2:after {
+	content: "";
+	height: 2px;
+	width: 30%;
+	background: #d4d4d4;
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+}	
+.signup-form h2:before {
+	left: 0;
+}
+.signup-form h2:after {
+	right: 0;
+}
+.signup-form .hint-text {
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.signup-form form {
+	color: #999;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	background: #f2f3f7;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+.signup-form .form-group {
+	margin-bottom: 20px;
+}
+.signup-form input[type="checkbox"] {
+	margin-top: 3px;
+}
+.signup-form .btn {        
+	font-size: 16px;
+	font-weight: bold;		
+	min-width: 140px;
+	outline: none !important;
+}
+.signup-form .row div:first-child {
+	padding-right: 10px;
+}
+.signup-form .row div:last-child {
+	padding-left: 10px;
+}    	
+.signup-form a {
+	color: #fff;
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	color: #5cb85c;
+	text-decoration: none;
+}	
+.signup-form form a:hover {
+	text-decoration: underline;
+}  
+/*------------------ Applicant page ----------------------*/
+.col-md-border {
+  border-right: 1px solid black;
+  /* padding-right: 5px; */
+}
+
+/*------------------ Bursary details page ----------------------*/
+.raw{
+  padding-right: 10px;
+  height: fit-content;
+  width: fit-content;
+  overflow-y: auto;
+}
+.raw thead th {
+  position: sticky;
+  top: 0;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.raw table, tr, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.raw th {
+  background: #5b4343ea;
+  color: white;
+}
+
+
+
+
+
+/*========================== Edit Bursary Form =======================*/
+
+.hidden {
+  display: none;
+}
+.account-form-col{
+  position: relative;
+  justify-self: center;
+}
+
+form.account-form{
+  position: absolute;
+  margin-top: 5%;
+  margin-left: 30%;
+  justify-content: center;
+}
+
+
+/*========================== SMALL SCREEN PROPERTIES =======================*/
+@media screen and (max-width: 991px) {
+  .col-md-border {
+    border: none;
+    /* padding-right: 5px; */
+  }  
+}
+
+@media screen and (max-width: 704px) {
+  body{
+    font-size: 12px;
+  }
+  .title{
+    font-size: 30px;
+    align-items: center;
+  }
+  .form-inputs{
+    position:relative;
+    margin-left: 5%;
+    width: 100%;
+  }
+  .applicant-row a{
+    font-size: 12px;
+  }
+  form.account-form{
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 25%;
+    justify-content: center;
+  }
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: left;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    float: none;
+    display: block;
+  }
+
+  .form-inputs{
+    position:relative;
+    margin-left: 5%;
+    width: 100%;
+    
+  }
+}
+
+@media screen and (max-width: 405px) {
+  .navbar a {
+    float: left;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 9px;
+    float: none;
+    display: block;
+  }
+
+  .bursary-row a {
+    font-size: 12px;
+  }
+
+  /* .applicant-row a{
+    font-size: 9px;
+  } */
+}

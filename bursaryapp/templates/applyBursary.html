@@ -1,0 +1,366 @@
+{% extends 'base.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!--  -->
+
+<!-- <form  method="post">
+    {% csrf_token %}
+    {{ applicant_form|crispy }}
+
+    <button type="submit">Submit</button>
+</form> -->
+
+<div class="container">
+    <h1 class="text-center">{{ bursary.name_of_bursary }} Application Form</h1>
+    <p><h5>INSTRUCTIONS:</h5></p>
+    <P><em>- Some of the fields are automatically completed for you</em></P>
+    <P><em>- Incase of changes or errors, please visit the bursay staff at the Dean of Students' office for correction</em></P>
+    <P><em>- Please complete the required details </em></P>
+    <div class="card">
+        <div class="card-header text-center">
+            <h5 class="card-title">PERSONAL DETAILS</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" name="application_form">
+                {% csrf_token %}
+                <div class="row hidden">
+                    <div class="col">
+                        {{applicant_form}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <label for="formGroupExampleInput">First Name</label>
+                    <input type="text" class="form-control" placeholder="{{user.first_name}}" value="{{user.first_name}}" disabled>
+                    </div>
+                    <div class="col">
+                    <label for="formGroupExampleInput">Last Name</label>
+                    <input type="text" class="form-control" placeholder="{{user.last_name}}" value="{{user.last_name}}" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput">Registration number</label> 
+                        <input type="text" class="form-control" placeholder="{{applicant_profile.registration_number}}" value="{{applicant_profile.registration_number}}" disabled>
+                        </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                    <label for="formGroupExampleInput">ID/Passport number</label>
+                    <input type="text" class="form-control" placeholder="{{applicant_profile.id_number}}" value="{{applicant_profile.id_number}}" disabled>
+                    </div>
+                    <div class="col">
+                    <label for="formGroupExampleInput">Telephone number</label>
+                    <input type="text" class="form-control" placeholder="{{user.phone_no}}" value="{{user.phone_no}}" disabled>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                    <label for="formGroupExampleInput">Gender</label>
+                    {% if user.gender == 'Male' %}
+                        <input type="text" class="form-control param" placeholder="boy_child" value="{{user.gender}}" disabled>
+                    {% else %}
+                        <input type="text" class="form-control param" placeholder="girl_child" value="{{user.gender}}" disabled>
+                    {% endif %}
+                    </div>
+                    <div class="col">
+                    <label for="formGroupExampleInput">County of Residence</label>
+                    <input type="text" class="form-control" placeholder="form-control param" value="{{applicant_profile.county}}" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput">Maritial Status</label>
+                        {% if applicant_profile.maritial_status == 'Married' %} 
+                            <input type="text" class="form-control param" placeholder="married" value="{{applicant_profile.maritial_status}}" disabled>
+                        {% else %}
+                            <input type="text" class="form-control param" placeholder="single" value="{{applicant_profile.maritial_status}}" disabled>
+                        {% endif %}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <label for="formGroupExampleInput">Family Background</label>
+                        {% if applicant_profile.death_cert_mother and applicant_profile.death_cert_father %}
+                            <input type="text" class="form-control param" placeholder="total_orphan" value="Total Orphan" disabled>
+                            <div class="custom-file">
+                                Mother's death certificate: <input type="file" name="myFile" value="{{applicant_profile.death_cert_mother}}" disabled>
+                            </div>
+                        {% elif applicant_profile.death_cert_father %}
+                            <input type="text" class="form-control param" placeholder="single_parent" value="Single parent (Mother Alive)" disabled>
+                            <div class="custom-file">
+                                Father's death certificate: <input type="file" name="myFile" value="{{applicant_profile.death_cert_father}}" disabled>
+                            </div>
+                        {% elif applicant_profile.death_cert_mother%}
+                            <input type="text" class="form-control param" placeholder="single_parent" value="Single parent (Father Alive)" disabled>
+                            <div class="custom-file">
+                                Mother's death certificate: <input type="file" name="myFile" value="{{applicant_profile.death_cert_mother}}" disabled>
+                            </div>
+                        {% else %}
+                            <input type="text" class="form-control" placeholder="Both parents alive" value="Both parents alive" disabled>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput">Parent's Occupation</label>
+                        <input type="text" class="form-control param" placeholder="parent_employed" value="{{applicant_profile.parents_occupation}}" disabled>
+                        </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput">Estimated Family Monthly Income</label>
+                        {% if applicant_profile.family_mothly_income > 15000 %}
+                            <input type="text" class="form-control" placeholder="{{applicant_profile.family_mothly_income}}" value="{{applicant_profile.family_mothly_income}}" disabled>
+                        {% else %}
+                            <input type="text" class="form-control param" placeholder="family_income" value="{{applicant_profile.family_mothly_income}}" disabled>
+                        {% endif %}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <label for="formGroupExampleInput">Number of siblings</label>
+                        {% if applicant_profile.number_of_siblings > 1 %}
+                            <input type="text" name="parameter" class="form-control param" placeholder="no_of_siblings" value="{{applicant_profile.number_of_siblings}}" disabled>
+                        {% else %}
+                            <input type="text" name="parameter" class="form-control" placeholder="{{applicant_profile.number_of_siblings}}" value="{{applicant_profile.number_of_siblings}}" disabled>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput">Your Physical Condition</label>
+                        {% if applicant_profile.disabled == True %}
+                            <input type="text" name="parameter" class="form-control param" placeholder="disabled" value="I am a person with disability" disabled>
+                        {% else %}
+                            <input type="text" class="form-control" placeholder="{{applicant_profile.disabled}}" value="I do not have any disability" disabled>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <div class="p-3 border bg-light"><h5 class="text-center">ACADEMIC DETAILS</h5></div>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col">
+                        <label for="formGroupExampleInput">Year of Study</label>
+                        {% if applicant_profile.year_of_study == 1 %}
+                            <input type="text" class="form-control param" placeholder="first_year" value="{{applicant_profile.year_of_study}}" disabled>
+                        {% elif applicant_profile.year_of_study == 2 %}
+                            <input type="text" class="form-control param" placeholder="second_year" value="{{applicant_profile.year_of_study}}" disabled>
+                        {% elif applicant_profile.year_of_study == 3 %}
+                            <input type="text" class="form-control param" placeholder="third_year" value="{{applicant_profile.year_of_study}}" disabled>
+                        {% else %}
+                            <input type="text" class="form-control param" placeholder="fourth_year" value="{{applicant_profile.year_of_study}}" disabled>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput">Student Category</label>
+                        {% if applicant_profile.student_category == 'GSSP' %}
+                            <input type="text" class="form-control param" placeholder="GSSP" value="{{applicant_profile.student_category}}" disabled>
+                        {% elif applicant_profile.student_category == 'PSSP Degree'%}
+                            <input type="text" class="form-control param" placeholder="PSSP_Degree" value="{{applicant_profile.student_category}}" disabled>
+                        {% else %}
+                            <input type="text" class="form-control param" placeholder="PSSP_Diploma" value="{{applicant_profile.student_category}}" disabled>
+                        {% endif %}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <label for="formGroupExampleInput">Performance:</label>
+                        <div class="text-muted">
+                            <em>Please attach latest transcript</em>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" name="myFile" value="{{applicant_profile.performance}}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <div class="p-3 border bg-light"><h5 class="text-center">FINANCIAL DETAILS</h5></div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <label for="formGroupExampleInput">How are you financing your education</label>
+                        <em>(Check all that apply)</em>
+                        <div class="form-check param">
+                            <input class="form-check-input param" type="checkbox" placeholder="parent_sponsored" value="" id="flexCheckDefault">
+                            <label class="form-check-label"  for="flexCheckDefault">
+                                Parents
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" placeholder="sponsor_sponsored" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Sponsor/s
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Personal Savings
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                HELB
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput">Have you ever defered your study?</label>
+                        <div class="form-check">
+                            <input class="form-check-input param" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <label for="formGroupExampleInput">Current outstanding Fee balance: </label>
+                        <input type="text" class="form-control" placeholder="{{applicant_profile.number_of_siblings}}" value="{{applicant_profile.number_of_siblings}}" disabled>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <div class="p-3 border bg-light"><h5 class="text-center">EXTRA-CURRICULAR DETAILS</h5></div>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <label for="formGroupExampleInput">List three (3) extra-curricular activities</label>
+                    <em>(e.g., clubs, societies, associations)</em>
+                    <div class="row">
+                        <div class="col">
+                            <label for="formGroupExampleInput">Activity</label>
+                            <input type="text" class="form-control" placeholder="Enter Activity">
+                        </div>
+                        <div class="col">
+                            <label for="formGroupExampleInput">Your involvement</label>
+                            <input type="text" class="form-control" placeholder="Your involvement">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="formGroupExampleInput">Activity</label>
+                            <input type="text" class="form-control" placeholder="Enter Activity">
+                        </div>
+                        <div class="col">
+                            <label for="formGroupExampleInput">Your involvement</label>
+                            <input type="text" class="form-control" placeholder="Your involvement">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="formGroupExampleInput">Activity</label>
+                            <input type="text" class="form-control" placeholder="Enter Activity">
+                        </div>
+                        <div class="col">
+                            <label for="formGroupExampleInput">Your involvement</label>
+                            <input type="text" class="form-control" placeholder="Your involvement">
+                        </div>
+                    </div>
+                </div>
+
+                <!--TEST ZONE-->
+                <br />
+                <div class="row hidden">
+                    <div class="col">
+                        <label for="formGroupExampleInput">TEST ADMIN QUERRy</label>
+                        <textarea class="form-control" placeholder="{{parameters_dict}}"></textarea>
+                    </div>
+                </div>
+
+
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <div class="p-3 border bg-light"><h5 class="text-center">DECLARATION</h5></div>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <em>- By Submitting this application you declare that the information provided herein is true and accurate to the best of your knowledge.</em><br>
+                    <em>- Incase of changes or errors, please visit the bursay staff at the Dean of Students' office for correction</em>
+                </div>
+
+                <br/>
+                {% for message in messages %}
+                    
+                {% endfor %}
+                <div class="d-flex justify-content-center button-div">
+                    <button class="btn custom-btn" type="submit" onclick="get_param();">Submit Application</button>
+                </div>
+
+            </form>
+        </div>
+      </div>   
+</div>
+
+<script type="text/javascript">
+
+    {% autoescape off %}
+        var java_dict = {{ parameters_dict }}; 
+    {% endautoescape %}
+    
+    const paramInput = Array.from(document.getElementsByClassName("form-control param"));
+
+    const L = [];
+
+    function get_param() {
+
+        paramInput.forEach(element => {
+            L.push(element.placeholder);
+        });
+        console.log(L);
+        console.log(java_dict);
+
+        'use strict';
+        const object = java_dict;
+        var score = 0;
+
+        for(var i=0; i<=L.length; i++)
+        { 
+            key = (L[i]);            
+            if (key in object){
+                console.log(object[key]);
+                score = score + object[key];
+            }
+        }
+        console.log("score is "+score)
+
+        const scoreVal = document.getElementById("id_score").value = score;
+
+    }
+</script>
+
+
+
+{% endblock%}

@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<!-- Login form -->
+<form class="site-form" action="{% url 'accounts:login' %}" method="post">
+  <h1>Sign In</h1>
+    {% csrf_token %}
+      <input type="text" name="email" placeholder="email"><br>
+      <input type="password" name="password" placeholder="password"><br>
+
+      <!-- An element to toggle between password visibility -->
+      <label><input type="checkbox" onclick="myFunction()">Show Password</label><br>
+      <button type="submit" class="registerbtn">Login</button>
+      <hr>
+    <div class="container signin">
+      <span class="psw d-block float-sm-none float-lg-right">Forgot password? <a href="#">Click here</a></span></p>
+    </div>
+</form>
+  <!-- /Login form -->
+{% endblock %}

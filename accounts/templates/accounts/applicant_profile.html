@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+    <div class="row mt-5 mb-5">
+        <div class="col d-none d-md-block"></div>
+        <div class="col"><h5>{{ applicant.user }}</h5></div>
+        <div class="col d-flex justify-content-end">
+
+            {% if user.is_staff %}
+                {% if applicant.approved == False %}
+                    <a class="btn btn-danger approve-badge" href="{% url 'accounts:approve' applicant.pk %}" role="button">approve</a>
+                {% else %}
+                    <a class="approved-badge">Approved </a>
+                {% endif %}
+            {% else %}
+                {% if applicant.approved == False %}
+                    <a class="btn-danger approve-badge">pending approval</a>
+                    <!-- <a class="btn btn-danger approve-badge" href="#" role="button">approve</a> -->
+                {% else %}
+                    <a class="approved-badge">Approved </a>
+                {% endif %}
+            {% endif %}
+
+           
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border">
+                <div class="col"><b>First name :</b>&nbsp {{applicant.user.first_name}}</div>
+                <div class="col"><b>Last name :</b>&nbsp {{applicant.user.last_name}}</div>
+            </div>
+
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border">
+                <div class="col"><b>Course name :</b>&nbsp {{applicant.course_name}}</div>
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border d-flex flex-row">
+                <div class="col"><b>Death certificate of father :</b> 
+                    {% if applicant.death_cert_father %}
+                            <a href="#" class="badg-blue">View file </a>
+                    {% else %}
+                        <a class="badg-blue">Null</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Phone no:</b>&nbsp {{applicant.user.phone_no}}</div>
+                <div class="col"><b>Email :</b>&nbsp {{applicant.user.email}}</div>
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Year of study :</b>&nbsp {{applicant.year_of_study}}</div>
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Death certificate of mother :</b> 
+                    {% if applicant.death_cert_mother %}
+                            <a href="#" class="badg-blue">View file </a>
+                    {% else %}
+                        <a class="badg-blue">Null</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Gender:</b>&nbsp {{applicant.user.gender}}</div>
+                <div class="col"><b>Date joined :</b>&nbsp ##</div>
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Fee balance :</b>&nbsp {{applicant.fee_balance}}</div>
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Family monthly income :</b>&nbsp {{applicant.family_mothly_income}}</div>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Maritial status:</b>&nbsp {{applicant.maritial_status}}</div>
+                <div class="col"><b>Disabled :</b>&nbsp {{applicant.disabled}}</div>
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Reg number :</b>&nbsp {{applicant.registration_number}}</div>
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Parents occupation :</b> {{ applicant.parents_occupation }}</div>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Maritial status:</b>&nbsp {{applicant.maritial_status}}</div>
+                <div class="col"><b>Disability status :</b>&nbsp {{applicant.disabled}}</div> 
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Reg number :</b>&nbsp {{applicant.registration_number}}</div>
+            </div>
+        </div>
+        <div class="col-12, col-md-2, col-lg-4">
+            <div class="row col-md-border pt-lg-4">
+                <div class="col"><b>Parents occupation :</b> {{ applicant.parents_occupation }}</div>
+            </div>
+        </div>  
+    </div>
+    
+</div>
+
+<!-- &nbsp {{applicant.user.last_name}}</div>  -->
+{% endblock %}

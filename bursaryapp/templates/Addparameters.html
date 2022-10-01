@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center">
+
+
+<div class="d-flex justify-content-center">
+
+<form method="POST" enctype="multipart/form-data">
+    <h1>Add parameters for bursary</h1>
+    {% csrf_token %}
+
+    {{ bursary_form}}
+    
+    
+    {% if parameters_form %}
+
+        {% for key, value in parameters_dict.items %}
+        
+        <input type="checkbox" id="{{key}}" value="{{key}}" name="parameter">
+        <label for="{{key}}"> {{ key }} </label><br />
+        <label for="parameter_value"> parameter_value </label>
+        <input type="text" id="parameter_value" value="{{value}}" name="parameter_value">
+        <br />
+
+        {% endfor %}
+
+    {% endif %}
+    <br />
+
+    <div class="d-flex justify-content-center button-div">
+        <button class="btn custom-btn" type="submit">Submit</button>
+    </div>
+
+</form>
+
+<!-- {% if parameters_form %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        Parameters
+         <br/>
+         {% for key, value in parameters_form.parameter.field.choices %}
+         <p>{{key}} : {{value}}</p>
+             <input type="checkbox" id="{{value}}" value="{{key}}" name="parameter">
+                 <label for="{{value}}">
+                     {{ value }}
+                 </label>
+                 <br />
+         {% endfor %} 
+
+         <input type="submit" value="Save">
+      </div>
+</form>
+{% endif %} -->
+
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title d-flex justify-content-center">{{ bursary.name_of_bursary }}</h5>
+                <small class="text-muted d-flex justify-content-center">00 days : 00 hours : 00 mins</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sr No.</th>
+                    <th scope="col">Applicant</th>
+                    <th scope="col">Score points</th>
+                </tr>
+            </thead>
+            {% for application in applications%}
+            <tr>
+                <!-- {{application.applicant.user.first_name }} ------ {{application.bursary_application}} <br> -->
+                <td> {{ forloop.counter }} </td>
+                <td> {{ application.applicant.user.first_name }}  {{application.applicant.user.last_name }}  </td>
+                <td> {{ application.score }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+        
+        
+        
+    
+
+</div>
+
+
+{% endblock %}

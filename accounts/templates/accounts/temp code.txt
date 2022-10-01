@@ -1,0 +1,55 @@
+Well here's another option which I've been using for some time now. It works great for me since I mostly need it do visually separate 2 cols. And it's also responsive. Which means that if I have columns next to each other in medium and large screen sizes, then I would use the class col-md-border, which would hide the separator on smaller screen sizes.
+
+css:
+
+@media (min-width: 992px) {
+    .col-md-border:not(:last-child) {
+        border-right: 1px solid #d7d7d7;
+    }
+    .col-md-border + .col-md-border {
+        border-left: 1px solid #d7d7d7;
+        margin-left: -1px;
+    }
+}
+In scss you can generate all needed classes probably from this:
+
+scss:
+
+@media(min-width: $screen-md-min) {
+    .col-md-border {
+        &:not(:last-child) {
+            border-right: 1px solid #d7d7d7;
+        }
+
+        & + .col-md-border {
+            border-left: 1px solid #d7d7d7;
+            margin-left: -1px;
+        }
+    }
+}
+HTML:
+
+<div class="row">
+    <div class="col-md-6 col-md-border"></div>
+    <div class="col-md-6 col-md-border"></div>
+</div>  
+How it works:
+
+The cols must be inside an element where there are no other cols otherwise the selectors might not work as expected.
+
+.col-md-border:not(:last-child) matches all but the last element before .row close and adds right border to it.
+
+.col-md-border + .col-md-border matches the second div with the same class if these two are next to each other and adds left border and -1px negative margin. Negative margin is why it doesn't matter anymore which column has greater height and the separator will be 1px the same height as the highest column.
+
+It does also have some problems...
+
+When you try to be clever/lazy and use col-XX-X class together with hidden-XX/visible-XX classes inside the same row element.
+When you have a lot of columns and need a pixel perfect thing. Since it moves n-1 column 1px to the left.
+... But on the other hand it's responsive, works great for simple html and it's easy to create these classes for all bootstrap screen sizes.
+
+
+
+<div class="row">
+      <div class="offset-6 border-left pl-4">First</div>
+      <div class="offset-6 border-left pl-4">Second</div>
+    </div>

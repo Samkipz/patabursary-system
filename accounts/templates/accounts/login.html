@@ -1,0 +1,87 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<!-- Login form -->
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col d-block justify-content-center align-items-center">
+      <form action="{% url 'accounts:login' %}" method="post" autocomplete="off">
+        {% csrf_token %}
+          <div class="d-block signin-form">
+            {% for message in messages %}
+              <p id="messages"><i class="fa fa-exclamation-triangle"></i>{{ message }}</p>
+              <!-- <div class="invalid-tooltip"> -->
+            {% endfor %}
+            <text class="title-text">Username</text><br>
+            <input type="text" name="email" placeholder="email" class="custom-input"><br><br>
+            <text class="title-text">Password</text><br>
+            <input type="password" name="password" placeholder="password" class="custom-input"><br>
+            {% if request.GET.next %}
+              <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
+            <br>
+            <br>
+            <!-- An element to toggle between password visibility -->
+            <!-- <label><input type="checkbox" onclick="myFunction()">Show Password</label><br> -->
+            <button type="submit" class="btn custom-btn">Login</button>
+          </div>
+          <hr>
+        <div class="container signin">
+          <span class="psw d-block float-sm-none float-lg-right">Forgot password? <a href="#">Click here</a></span></p>
+        </div>
+    </form>
+    </div>
+    <div class="col"></div>
+  </div>
+
+  <!-- <div class="row account-form-row">
+    <div class="col account-form-col ml-5">
+      <form class="account-form" action="{% url 'accounts:login' %}" method="post" autocomplete="off">
+          {% csrf_token %}
+            <div class="signin-form">
+              {% for message in messages %}
+                <p id="messages"><i class="fa fa-exclamation-triangle"></i>{{ message }}</p>
+              {% endfor %}
+              <text class="title-text">Username</text><br>
+              <input type="text" name="email" placeholder="email" class="custom-input"><br><br>
+              <text class="title-text">Password</text><br>
+              <input type="password" name="password" placeholder="password" class="custom-input"><br>
+              {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+              {% endif %}
+              <br>
+              <br>
+              <!-- An element to toggle between password visibility -->
+              <!-- <label><input type="checkbox" onclick="myFunction()">Show Password</label><br> -->
+              <!-- <button type="submit" class="btn custom-btn">Login</button>
+            </div>
+            <hr>
+          <div class="container signin">
+            <span class="psw d-block float-sm-none float-lg-right">Forgot password? <a href="#">Click here</a></span></p>
+          </div>
+      </form> -->
+        <!-- /Login form -->     
+    <!-- </div>
+  </div>
+</div> -->
+
+
+<!-- <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+  <h1>Sign In</h1>
+    {% csrf_token %}
+      <input type="text" name="email" placeholder="email"><br>
+      <input type="password" name="password" placeholder="password"><br>
+
+      
+      <label><input type="checkbox" onclick="myFunction()">Show Password</label><br>
+      <button type="submit" class="registerbtn">Login</button>
+      <hr>
+    <div class="container signin">
+      <span class="psw d-block float-sm-none float-lg-right">Forgot password? <a href="#">Click here</a></span></p>
+    </div>
+</form>
+  -->
+{% endblock %}

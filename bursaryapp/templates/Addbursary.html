@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-center">
+    
+    <form  method="post">
+        <h1>Add New Bursary</h1>
+        {% csrf_token %}
+        {{ bursary_form|crispy }}
+        <br>
+        <div class="d-flex justify-content-center button-div">
+            <button class="btn custom-btn" type="submit">Save</button>
+        </div>
+
+        <!-- <button type="submit">Save</button> -->
+    </form>
+
+</div>
+
+{% endblock %}
