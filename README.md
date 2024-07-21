@@ -14,8 +14,8 @@ Ensure you have the following installed:
 
 1. **Clone the Repository**
    ```bash
-   git clone <repo-url>
-   cd <repo-directory>
+   git clone https://github.com/Samkipz/patabursary-system.git
+   cd patabursary-system
    ```
 
 2. **Create a Virtual Environment**
@@ -27,7 +27,7 @@ Ensure you have the following installed:
 
    - On Windows:
      ```bash
-     .\env\Scripts\activate
+     source env/Scripts/activate
      ```
    - On macOS and Linux:
      ```bash
